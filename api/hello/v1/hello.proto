@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package hello.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "kratos-layoutapi/hello/v1;v1";
+
+service HelloService {
+    rpc Hello(HelloReq) returns (HelloResp) {
+        option (google.api.http) = {
+            post: "/v1/hello"
+            body: "*"
+        };
+    }
+}
+message HelloReq {
+    string name = 1;
+}
+
+message HelloResp {
+    string message = 1;
+}
